@@ -1,0 +1,12 @@
+# gerado pelo build
+dist/
+
+# site antigo e arquivos fora de uso (ficam só nesta máquina)
+_antigo/
+
+# notas internas de passagem entre sessões
+HANDOFF.md
+
+node_modules/
+.vercel/
+.superpowers/

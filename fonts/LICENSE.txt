@@ -1,0 +1,6 @@
+Fontes usadas neste site, servidas em subconjunto latino (woff2) obtido do Google Fonts:
+
+- Archivo, de Omnibus-Type. SIL Open Font License 1.1.
+- Geist e Geist Mono, da Vercel. SIL Open Font License 1.1.
+
+Texto da licença: https://openfontlicense.org/open-font-license-official-text/

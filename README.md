@@ -1,0 +1,62 @@
+# Portfólio de Armando Carlini
+
+Página única, cinematográfica, comandada pela rolagem: abertura com a assinatura desenhada, manifesto,
+a Revion Platform, o trajeto de uma paciente pelos sistemas, cinco casos com telas em código, um voo
+por São Paulo em vídeo, o túnel de fotos, o ATLAS e o contato.
+
+HTML, CSS e JavaScript sem framework. GSAP 3.13 (com ScrollTrigger) e Lenis 1.3.4 ficam em `js/vendor/`,
+com a versão no nome do arquivo.
+
+## Rodar localmente
+
+Precisa de Node 20 ou mais novo. Não há dependências para instalar.
+
+```bash
+npm run preview
+# monta dist/ e serve em http://localhost:4411
+```
+
+O servidor local (`scripts/servir.mjs`) aplica os mesmos cabeçalhos do `vercel.json`, comprime os textos
+e responde a pedidos parciais de vídeo, então o que funciona nele funciona na Vercel.
+
+## Estrutura
+
+| Caminho | O que é |
+|---|---|
+| `index.html` | a página inteira |
+| `404.html` | página de erro |
+| `css/site.css` | estilos, tokens da paleta "tinta" e as fontes |
+| `js/site.js` | movimento, assinatura vetorial (`SIG`, `PONTOS`), vídeo, cursor e barra de rolagem |
+| `js/vendor/` | GSAP, ScrollTrigger e Lenis |
+| `fonts/` | Archivo, Geist e Geist Mono em woff2, só o subconjunto latino |
+| `img/` | fotos, capturas do ATLAS, posters do voo, ícones e a imagem de compartilhamento (`og.jpg`) |
+| `video/voo.mp4` | voo por São Paulo para desktop, 1440×810, comandado pela rolagem |
+| `video/voo-vertical.mp4` | recorte vertical para celular, 504×896, toca em loop quando a seção aparece |
+| `scripts/build.mjs` | monta `dist/` |
+| `scripts/servir.mjs` | servidor local de conferência |
+
+## Publicar na Vercel
+
+1. Importe o repositório na Vercel. O `vercel.json` já define o build (`node scripts/build.mjs`) e a saída (`dist`).
+2. O build troca o marcador `SITE_URL` (canonical, Open Graph, sitemap, robots) pelo domínio de produção
+   que a Vercel informa. Para forçar outro, crie a variável de ambiente `SITE_URL`, por exemplo
+   `https://armandocarlini.com`.
+3. Cada arquivo de `css/`, `js/`, `fonts/`, `img/` e `video/` recebe `?v=<hash>` no build e vai com cache de um ano.
+   Trocar uma foto mantendo o nome é seguro: o hash muda e o navegador baixa a nova.
+
+## Cuidados ao editar
+
+- **Script inline do `<head>`**: a Content-Security-Policy do `vercel.json` só libera esse script pelo hash.
+  Se ele mudar, o build para e mostra o hash novo para colar no `vercel.json`.
+- **Vídeo**: quadros-chave a cada 12 quadros deixam a busca na rolagem fluida. Para regerar a partir do original:
+
+  ```bash
+  ffmpeg -i original.mp4 -an -vf scale=1440:810:flags=lanczos -c:v libx264 -preset slower -crf 28 \
+    -profile:v high -pix_fmt yuv420p -g 12 -keyint_min 12 -sc_threshold 0 -movflags +faststart video/voo.mp4
+  ffmpeg -i original.mp4 -an -vf "crop=506:900:547:0,scale=504:896:flags=lanczos" -c:v libx264 -preset slower \
+    -crf 26 -profile:v high -pix_fmt yuv420p -g 60 -movflags +faststart video/voo-vertical.mp4
+  ```
+
+  Os posters (`img/voo-poster*.webp`) são o primeiro quadro de cada versão.
+- **Movimento reduzido**: com `prefers-reduced-motion`, não há abertura, rolagem suave, cursor nem vídeo;
+  as seções presas viram layout comum.
