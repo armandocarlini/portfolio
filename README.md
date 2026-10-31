@@ -31,9 +31,22 @@ e responde a pedidos parciais de vídeo, então o que funciona nele funciona na 
 | `fonts/` | Archivo, Geist e Geist Mono em woff2, só o subconjunto latino |
 | `img/` | fotos, capturas do ATLAS, posters do voo, ícones e a imagem de compartilhamento (`og.jpg`) |
 | `video/voo.mp4` | voo por São Paulo para desktop, 1440×810, comandado pela rolagem |
-| `video/voo-vertical.mp4` | recorte vertical para celular, 504×896, toca em loop quando a seção aparece |
+| `video/voo-vertical.mp4` | recorte vertical para celular, 504×896, avança e retrocede com a rolagem |
 | `scripts/build.mjs` | monta `dist/` |
 | `scripts/servir.mjs` | servidor local de conferência |
+
+## Conferir movimento no celular
+
+O mobile tem três cenas presas (abertura, cidade e túnel de fotos). No túnel, a câmera atravessa as fotos
+em profundidade, com enquadramento próprio para celular e texto no final. Projetos, ilustrações e assinatura
+acompanham a rolagem sem prender as demais seções. O vídeo vertical existente é carregado como blob perto da cidade;
+as buscas de quadro são agrupadas para não sobrecarregar o decodificador. Movimento reduzido mantém o conteúdo legível sem essas animações.
+
+Com a prévia rodando, `rtk proxy node scripts/check-mobile.mjs "caminho/para/playwright/index.mjs"`
+testa Chrome em 360×640, 390×844, 844×390 e 1440×900, além de movimento reduzido e troca de breakpoint.
+É necessário ter Playwright e Google Chrome instalados. `TEST_URL` troca o endereço da prévia;
+`TEST_WIDTH` filtra uma largura e `TEST_CPU=4` simula uma CPU quatro vezes mais lenta.
+As capturas ficam em `_antigo/qa-mobile/`, fora do deploy. Safari em um iPhone físico ainda deve ser conferido.
 
 ## Publicar na Vercel
 

@@ -136,13 +136,14 @@
   /* ---------- texto que preenche a largura ---------- */
   // escreve tudo, mede tudo, escreve tudo: um cálculo de layout só, em vez de um por linha
   function ajustar() {
+    const larguraViewport = document.documentElement.clientWidth;
     const linhas = $$('.fit');
     linhas.forEach((el) => { el.style.fontSize = '100px'; });
     const tamanhos = linhas.map((el) => {
       const natural = el.offsetWidth || 1;
       const escala = parseFloat(el.dataset.escala || '0');
       let alvo;
-      if (escala) alvo = window.innerWidth * escala;
+      if (escala) alvo = larguraViewport * escala;
       else {
         const pai = el.parentElement, cs = getComputedStyle(pai);
         alvo = pai.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
@@ -185,7 +186,8 @@
 
   /* ---------- palavras ---------- */
   function partirPalavras(el) {
-    if (!el || el.dataset.partido) return [];
+    if (!el) return [];
+    if (el.dataset.partido) return $$('.w', el);
     el.dataset.partido = '1';
     const out = [];
     const andar = (no) => {
@@ -509,33 +511,138 @@
     sigFim.tracos.forEach((p, i) => { gsap.set(p, { strokeDasharray: 1, strokeDashoffset: 1 }); tlAss.to(p, { strokeDashoffset: 0, duration: SIG[i][1], ease: 'none' }, SIG[i][0]); });
     gsap.from('.lin', { y: 40, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06, scrollTrigger: { trigger: '.outros', start: 'top 80%' } });
 
-    return () => { gsap.ticker.remove(buscar); pararPerto(); durV = 0; };
+    return () => {
+      gsap.ticker.remove(buscar); pararPerto(); durV = 0;
+      cena.style.removeProperty('transform'); fotos.forEach((f) => f.style.removeProperty('opacity'));
+      $$('.prog i').forEach((el) => el.style.removeProperty('transform'));
+      if (traj) traj.els.forEach((el) => el.classList.remove('on'));
+    };
   });
 
-  mm.add('(max-width: 899px), (prefers-reduced-motion: reduce)', () => {
+  mm.add('(prefers-reduced-motion: reduce)', () => {
     $$('.passo').forEach((p) => gsap.set(p, { clearProps: 'all' }));
     if (traj) { traj.els.forEach((e) => e.classList.add('on')); gsap.set(traj.on, { strokeDashoffset: 0 }); }
     sigFim.inteira(true);                                    // sem a escrita na rolagem, a assinatura do contato aparece inteira
-    if (reduz) return;
-    $$('.peca, .princ article, .cit figure, .dec article, .lin').forEach((el) => {
-      gsap.from(el, { y: 50, opacity: 0, duration: 0.9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
-    });
-
-    /* celular: voo vertical em loop, tocando só enquanto a cidade está na tela */
-    if (!vid || !cidade || !('IntersectionObserver' in window)) return;
-    let visivel = false;
-    const tocar = () => { if (visivel && vid.classList.contains('on')) vid.play().catch(() => {}); };
-    const pararPerto = quandoPerto(cidade, '150%', () => {
-      vid.loop = true;
-      trocarVideo(vid.dataset.srcM, false, () => { vid.classList.add('on'); tocar(); });
-    });
-    const io = new IntersectionObserver((es) => {
-      visivel = es[0].isIntersecting;
-      if (visivel) tocar(); else vid.pause();
-    }, { threshold: 0.25 });
-    io.observe(cidade);
-    return () => { pararPerto(); io.disconnect(); vid.pause(); vid.loop = false; };
+    if (vid) vid.pause();
   });
 
-  addEventListener('resize', () => { ajustar(); });
+  mm.add('(max-width: 899px) and (prefers-reduced-motion: no-preference)', () => {
+    // Abertura, cidade e túnel têm câmera própria; o restante acompanha o dedo.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    const palavras = partirPalavras($('.manif-t'));
+    const hero = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=115%', pin: true, scrub: 0.35 } });
+    hero.to('.hero-foto', { scale: 1.12, opacity: 0, duration: 0.35 }, 0)
+      .to('.hero-nome .l1', { xPercent: -35, opacity: 0, duration: 0.4 }, 0)
+      .to('.hero-nome .l2', { xPercent: 35, opacity: 0, duration: 0.4 }, 0)
+      .to('.hero-top, .hero-pe', { opacity: 0, duration: 0.2 }, 0)
+      .to('.hero-fundo img', { scale: 1, duration: 1, ease: 'none' }, 0)
+      .fromTo('.manif', { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.3)
+      .fromTo(palavras, { opacity: 0.18 }, { opacity: 1, stagger: 0.035, duration: 0.08, ease: 'none' }, 0.4)
+      .to({}, { duration: 0.15 });
+
+    $$('.intro-t .fit, .plat-t .fit, .sobre h2 .fit, .princ article, .cit figure, .dec article, .arq div, .lin, .nums div').forEach((el) => {
+      gsap.from(el, { y: 32, opacity: 0, duration: 0.7, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 92%', toggleActions: 'play none none reverse' } });
+    });
+    $$('.fio-intro .fio-p, .princ svg path, .princ svg rect, .princ svg circle').forEach((el) => {
+      const L = el.getTotalLength();
+      gsap.fromTo(el, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: el.closest('.princ article') || '.intro', start: 'top 80%', end: 'bottom 55%', scrub: 0.4 } });
+    });
+    gsap.fromTo('.faixa', { xPercent: 2 }, { xPercent: -65, ease: 'none', scrollTrigger: { trigger: '.plat', start: 'top bottom', end: 'bottom top', scrub: 0.4 } });
+
+    if (traj) {
+      gsap.set(traj.on, { strokeDasharray: traj.L, strokeDashoffset: traj.L });
+      const passos = $$('.passo'), barras = $$('.prog i');
+      ScrollTrigger.create({ trigger: '.passos', start: 'top 70%', end: 'bottom 60%', onUpdate: (st) => {
+        const p = st.progress, pt = traj.base.getPointAtLength(traj.L * p);
+        traj.on.style.strokeDashoffset = traj.L * (1 - p);
+        [traj.trem, traj.anel].forEach((el) => { el.setAttribute('cx', pt.x); el.setAttribute('cy', pt.y); });
+        traj.els.forEach((el, i) => el.classList.toggle('on', traj.EST[i][2] <= p));
+        trajSvg.style.transform = 'translateX(' + (-Math.max(0, trajSvg.clientWidth - trajSvg.parentElement.clientWidth) * p) + 'px)';
+        barras.forEach((el, i) => { el.style.transform = 'scaleX(' + Math.max(0, Math.min(1, p * 5 - i)) + ')'; });
+      } });
+      passos.forEach((el) => gsap.fromTo(el, { opacity: 0.3, x: 12 }, { opacity: 1, x: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 55%', scrub: true } }));
+    }
+
+    $$('.caso').forEach((caso) => {
+      const nome = $('.caso-nome .fit', caso);
+      gsap.fromTo(nome, { x: 20 }, { x: () => -Math.max(0, nome.offsetWidth - innerWidth + 24), ease: 'none', scrollTrigger: { trigger: caso, start: 'top bottom', end: 'bottom top', scrub: 0.4, invalidateOnRefresh: true } });
+      $$('.peca', caso).forEach((el, i) => {
+        gsap.from(el, { y: 65, rotation: i % 2 ? 3 : -3, scale: 0.94, opacity: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top 96%', end: 'top 58%', scrub: 0.3 } });
+      });
+      $$('.seq', caso).forEach((el) => gsap.from(el, { y: 14, opacity: 0, duration: 0.45, scrollTrigger: { trigger: el, start: 'top 78%', toggleActions: 'play none none reverse' } }));
+      $$('.barras span, .nps', caso).forEach((el) => gsap.from(el, { scaleY: 0, transformOrigin: 'bottom', duration: 0.8, scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' } }));
+      $$('.doc-assin path, .linha-fin', caso).forEach((el) => gsap.fromTo(el, { attr: { pathLength: 1 }, strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top 85%', end: 'top 55%', scrub: 0.3 } }));
+    });
+
+    /* A mesma travessia do desktop, com enquadramento e perspectiva para touch. */
+    const cenaFotos = $('.tunel-cena'), fotos = $$('.tf');
+    const profundidades = fotos.map((el) => parseFloat(getComputedStyle(el).getPropertyValue('--z')) || 0);
+    const camera = { z: 0 };
+    const moverCamera = () => {
+      cenaFotos.style.transform = 'translate3d(0,0,' + camera.z + 'px)';
+      fotos.forEach((el, i) => {
+        const z = profundidades[i] + camera.z;
+        const entrada = Math.max(0, Math.min(1, (z + 2100) / 1300));
+        const saida = Math.max(0, Math.min(1, (480 - z) / 240));
+        el.style.opacity = (entrada * saida).toFixed(3);
+        el.style.visibility = z >= 480 ? 'hidden' : 'visible';
+      });
+    };
+    moverCamera();
+    // Carrega as fotos antes de atravessá-las, inclusive as profundas fora da tela.
+    const pararFotos = quandoPerto($('.tunel'), '150%', () => {
+      fotos.forEach((el) => { $('img', el).loading = 'eager'; });
+    });
+    gsap.timeline({ scrollTrigger: { trigger: '.tunel', start: 'top top', end: '+=300%', pin: true, scrub: 0.45 } })
+      .to(camera, { z: 3900, duration: 1, ease: 'none', onUpdate: moverCamera }, 0)
+      .fromTo('.tunel-txt', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.88)
+      .to({}, { duration: 0.12 });
+    $$('.sobre-foto img, .cont-foto img').forEach((el) => gsap.fromTo(el, { scale: 1.15, yPercent: -4 }, { scale: 1.04, yPercent: 3, ease: 'none', scrollTrigger: { trigger: el.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } }));
+    const qPal = partirPalavras($('.diario-q'));
+    gsap.fromTo(qPal, { opacity: 0.2 }, { opacity: 1, stagger: 0.05, ease: 'none', scrollTrigger: { trigger: '.diario-q', start: 'top 82%', end: 'bottom 48%', scrub: true } });
+    gsap.from('.atlas-moldura', { rotationX: 18, scale: 0.9, y: 32, ease: 'none', scrollTrigger: { trigger: '.atlas-cena', start: 'top 95%', end: 'top 45%', scrub: 0.4 } });
+    gsap.to('.mq', { xPercent: -55, ease: 'none', scrollTrigger: { trigger: '.contato', start: 'top bottom', end: 'bottom bottom', scrub: 0.4 } });
+    sigFim.inteira(false);
+    const assinatura = gsap.timeline({ scrollTrigger: { trigger: '.cont-foto', start: 'top 65%', end: 'bottom 65%', scrub: 0.3 }, onUpdate: () => sigFim.inteira(assinatura.progress() > 0.995) });
+    sigFim.tracos.forEach((el, i) => assinatura.fromTo(el, { strokeDasharray: 1, strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: SIG[i][1], ease: 'none' }, SIG[i][0]));
+
+    /* Scroll World: vídeo vertical, busca agrupada e poster até o primeiro quadro. */
+    if (!vid || !cidade) return;
+    let ativo = true, duracao = 0, progresso = 0, preparado = false;
+    const buscar = () => {
+      if (!ativo || !duracao || vid.seeking || document.hidden) return;
+      const t = progresso * Math.max(0, duracao - 0.05);
+      if (Math.abs(vid.currentTime - t) > 0.035) vid.currentTime = t;
+    };
+    const revelar = () => { if (ativo && vid.readyState >= 2) vid.classList.add('on'); };
+    const preparar = () => {
+      if (!ativo || !duracao || preparado) return;
+      preparado = true;
+      vid.play().then(() => { if (ativo) { vid.pause(); buscar(); } }).catch(() => { preparado = false; });
+    };
+    vid.addEventListener('seeked', revelar);
+    addEventListener('touchstart', preparar, { passive: true });
+    const pararPerto = quandoPerto(cidade, '200%', () => trocarVideo(vid.dataset.srcM, true, () => {
+      if (!ativo) return;
+      vid.loop = false; vid.pause(); duracao = vid.duration || 0;
+      preparar(); buscar();
+    }));
+    gsap.ticker.add(buscar);
+    gsap.timeline({ scrollTrigger: { trigger: cidade, start: 'top top', end: '+=180%', pin: true, scrub: 0.3, onUpdate: (st) => { progresso = Math.max(0, Math.min(1, (st.progress - 0.12) / 0.83)); } } })
+      .to('.tela', { scale: 3, opacity: 0, duration: 0.22, ease: 'power2.in' }, 0)
+      .to('.cid-b1', { opacity: 0, y: -24, duration: 0.15 }, 0.1)
+      .from('.cid-b2', { opacity: 0, y: 32, duration: 0.18 }, 0.72)
+      .to({}, { duration: 0.1 });
+    return () => {
+      pararFotos(); cenaFotos.style.removeProperty('transform');
+      fotos.forEach((el) => { el.style.removeProperty('opacity'); el.style.removeProperty('visibility'); });
+      ativo = false; pararPerto(); gsap.ticker.remove(buscar);
+      removeEventListener('touchstart', preparar); vid.removeEventListener('seeked', revelar); vid.pause();
+      if (traj) { trajSvg.style.removeProperty('transform'); traj.els.forEach((el) => el.classList.remove('on')); $$('.prog i').forEach((el) => el.style.removeProperty('transform')); }
+      sigFim.inteira(true);
+    };
+  });
+
+  let largura = innerWidth;
+  addEventListener('resize', () => { if (innerWidth !== largura) { largura = innerWidth; ajustar(); } });
 })();
