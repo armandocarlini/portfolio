@@ -1,0 +1,8 @@
+@font-face{font-family:Portfolio;src:url('/portfolio-font.woff2')}@font-face{font-family:PortfolioTitle;src:url('/portfolio-title.woff2')}
+:root,[data-tema="claro"],[data-theme="light"]{--md-breu:#1d1b19;--md-breu-hover:#292725;--md-breu-solid:#292725;--md-breu-chip:#34312e;--md-paper:#eee7dd;--md-paper-solid:#f7f3ed;--md-ink:#252321;--md-ink-2:#585651;--md-brass:#8ea9cc;--md-brass-light:#bacce4;--md-brass-d:#49678d;--md-brass-dd:#34418e;--md-badge:#8ea9cc;--md-font-title:PortfolioTitle;--md-font-body:Portfolio;--md-font-label:Portfolio;--md-font-mark:Portfolio;--fundo:#eee7dd;--texto:#252321;--texto-2:#45423d;--suave:#66615a;--fraco:#736c63;--acento:#49678d;--cta-fundo:#283b53;--cta-texto:#f7f3ed;--cartao:#f7f3ed;--painel:#e7dfd3;--hover:#dbe3ed;--selecao:#dbe3ed;--balao-enviado:#dbe3ed;--linha:#d7cfc3;--faixa:#1d1b19;--faixa-trilho:#171615;--faixa-hover:#33312f;--faixa-ativo:#303c4b;--faixa-campo:#292725;--faixa-linha:#393632;--latao:#8ea9cc;--selo:#49678d;--dp-bg:#eee7dd;--dp-focus:#49678d;--dp-glow-out:#8ea9cc18;--dp-glow-in:#8ea9cc0a;--accent:#49678d}
+body,button,input,textarea,select,body *{font-family:Portfolio,Arial,sans-serif!important}h1,h2,h3,.md-greet-line,.md-greet-name,.md-patient-name{font-family:PortfolioTitle,Arial,sans-serif!important;letter-spacing:-.03em!important}
+canvas,.fv-waves,.fv-noise,.md-waves,.md-grain{visibility:hidden!important}.portfolio-wordmark{font-size:18px;letter-spacing:.08em;font-weight:600;color:inherit}.font-marca{font-size:24px!important;color:#8ea9cc!important}
+.md-logo-btn .portfolio-wordmark{color:#eee7dd}
+/* A demonstração usa fixtures locais, sem conexão de eventos ao servidor. */
+[role="status"]{display:none!important}
+.fv-ondas,.fv-luz,.fv-feixe{display:none!important}

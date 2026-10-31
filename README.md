@@ -1,8 +1,8 @@
 # Portfólio de Armando Carlini
 
-Página única, cinematográfica, comandada pela rolagem: abertura com a assinatura desenhada, manifesto,
-a Revion Platform, o trajeto de uma paciente pelos sistemas, cinco casos com telas em código, um voo
-por São Paulo em vídeo, o túnel de fotos, o ATLAS e o contato.
+Home cinematográfica comandada pela rolagem, com três projetos em destaque, capturas reais dos apps,
+um voo por São Paulo, túnel de fotos, ATLAS e contato. A página `projetos.html` reúne telas complementares,
+fluxos e implementação. O conteúdo técnico fica visível, sem acordeões.
 
 HTML, CSS e JavaScript sem framework. GSAP 3.13 (com ScrollTrigger) e Lenis 1.3.4 ficam em `js/vendor/`,
 com a versão no nome do arquivo.
@@ -23,7 +23,10 @@ e responde a pedidos parciais de vídeo, então o que funciona nele funciona na 
 
 | Caminho | O que é |
 |---|---|
-| `index.html` | a página inteira |
+| `index.html` | home e projetos em destaque |
+| `projetos.html` | projetos, capturas e detalhes de implementação |
+| `css/projetos.css` | composição das telas reais e página de projetos |
+| `js/projetos.js` | ampliação acessível das capturas e movimento da página de projetos |
 | `404.html` | página de erro |
 | `css/site.css` | estilos, tokens da paleta "tinta" e as fontes |
 | `js/site.js` | movimento, assinatura vetorial (`SIG`, `PONTOS`), vídeo, cursor e barra de rolagem |
@@ -49,6 +52,15 @@ testa Chrome em 360×640, 390×844, 844×390 e 1440×900, além de movimento red
 As capturas ficam em `_antigo/qa-mobile/`, fora do deploy. Safari em um iPhone físico ainda deve ser conferido.
 
 ## Publicar na Vercel
+
+As imagens de `img/projetos/` são demonstrações adaptadas do DocShield, Atendimento e TV Gerência.
+Os layouts preservam a estrutura dos apps; marca, tipografia e cores são adaptadas ao portfólio por `scripts/tema-capturas.css`.
+Antes de capturar, execute `rtk proxy node scripts/preparar-capturas.mjs`: ele exporta `origin/main` para `_antigo/captura-atual`, compila o frontend e registra a revisão usada. Não reutilize builds antigos dos worktrees.
+`scripts/capturar-produtos.mjs` usa os assets originais e intercepta as APIs com fixtures de demonstração;
+não acessa a produção nem utiliza dados de pacientes. O caminho do checkout de origem está no início do script.
+Para reproduzir: `rtk proxy node scripts/capturar-produtos.mjs "caminho/para/playwright/index.mjs"`.
+`scripts/check-projects.mjs` confere telas, ampliação, navegação, overflow e console em desktop e mobile
+com a prévia na porta 4412. Também compara a altura da home com `main`.
 
 1. Importe o repositório na Vercel. O `vercel.json` já define o build (`node scripts/build.mjs`) e a saída (`dist`).
 2. O build troca o marcador `SITE_URL` (canonical, Open Graph, sitemap, robots) pelo domínio de produção

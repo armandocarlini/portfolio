@@ -8,8 +8,8 @@ import { fileURLToPath } from 'node:url';
 const raiz = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(raiz, 'dist');
 
-const PUBLICAR = ['index.html', '404.html', 'css', 'js', 'fonts', 'img', 'video', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'site.webmanifest', 'robots.txt', 'sitemap.xml'];
-const TEXTO = ['index.html', '404.html', 'css/site.css', 'site.webmanifest', 'robots.txt', 'sitemap.xml'];
+const PUBLICAR = ['index.html', 'projetos.html', '404.html', 'css', 'js', 'fonts', 'img', 'video', 'favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'site.webmanifest', 'robots.txt', 'sitemap.xml'];
+const TEXTO = ['index.html', 'projetos.html', '404.html', 'css/site.css', 'css/projetos.css', 'site.webmanifest', 'robots.txt', 'sitemap.xml'];
 
 // Na Vercel, VERCEL_PROJECT_PRODUCTION_URL traz o domínio de produção (o próprio, quando houver, ou o .vercel.app).
 function dominio() {
@@ -62,7 +62,7 @@ if (faltando.length) throw new Error('Arquivos referenciados que não existem:\n
 
 // O script inline do <head> só roda se o hash dele estiver na Content-Security-Policy do vercel.json.
 const csp = JSON.stringify(JSON.parse(readFileSync(join(raiz, 'vercel.json'), 'utf8')).headers);
-for (const pagina of ['index.html', '404.html']) {
+for (const pagina of ['index.html', 'projetos.html', '404.html']) {
   const html = readFileSync(join(dist, pagina), 'utf8');
   for (const [, codigo] of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) {
     const hash = "'sha256-" + createHash('sha256').update(codigo).digest('base64') + "'";

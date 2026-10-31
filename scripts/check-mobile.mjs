@@ -21,7 +21,7 @@ try {
     await page.waitForTimeout(2400);
     assert.ok(await page.locator('.hero-nome .fit').evaluateAll((es) => es.every((e) => e.offsetWidth <= document.documentElement.clientWidth)), 'nome completo na abertura');
     const pins = await page.evaluate(() => ScrollTrigger.getAll().filter((s) => s.pin).length);
-    assert.equal(pins, reduce ? 0 : width < 900 ? 3 : 9, 'cenas presas à tela');
+    assert.equal(pins, reduce ? 0 : width < 900 ? 3 : 7, 'cenas presas à tela');
     const move = async (selector, fraction = 0) => {
       await page.evaluate(({ selector, fraction }) => {
         const st = ScrollTrigger.getAll().find((s) => s.pin && s.trigger.matches(selector));

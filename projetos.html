@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Projetos · Armando Carlini</title>
+<meta name="description" content="Interfaces, fluxos e decisões de implementação: Revion Atendimento, DocShield, TV Gerência e ATLAS.">
+<meta name="author" content="Armando Ciciliano Carlini">
+<meta name="theme-color" content="#1D1B19">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="SITE_URL/projetos.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Armando Carlini">
+<meta property="og:title" content="Projetos · Armando Carlini">
+<meta property="og:description" content="Backend e integração de sistemas, do requisito ao deploy. Único dev de uma plataforma de saúde com 10 apps em produção.">
+<meta property="og:url" content="SITE_URL/projetos.html">
+<meta property="og:image" content="SITE_URL/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Armando Carlini, engenheiro de software, com a assinatura dele sobre o retrato">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/projetos.css">
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Armando Ciciliano Carlini","alternateName":"Armando Carlini","jobTitle":"Engenheiro de software","url":"SITE_URL/","image":"SITE_URL/img/retrato-cor.webp","worksFor":{"@type":"Organization","name":"Revion International Clinic"},"address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressCountry":"BR"},"knowsLanguage":["pt-BR","en"],"sameAs":["https://www.linkedin.com/in/armandocarlini/","https://github.com/armandocarlini","https://www.instagram.com/armando_carlini/"]}</script>
+</head>
+<body class="pagina-projetos"><a class="pular" href="#conteudo">Pular para o conteúdo</a><div class="perola" aria-hidden="true"></div><div class="barra" aria-hidden="true"><span class="barra-p"></span></div>
+<header class="topo"><a class="marca marca-texto" href="index.html">Armando Carlini</a><nav class="nav" aria-label="Principal"><a href="index.html">Início</a><a class="pill" href="index.html#contato">Fale comigo</a></nav></header>
+<main id="conteudo"><section class="projetos-abertura wrap"><p class="mono muted">Portfólio selecionado · Engenharia de software</p><h1 class="disp">Por dentro<br>dos projetos<span class="tinta">.</span></h1><div class="abertura-base"><p>Interfaces que a equipe usa.<br>Sistemas que fazem a operação acontecer.</p><p class="muted">Do atendimento à gestão, uma seleção do que construí na Revion e no ATLAS. Aqui estão as telas, os fluxos e as decisões por trás de cada produto.</p></div><nav class="indice-projetos" aria-label="Ir para um projeto"><a href="#atendimento">Atendimento <span>↘</span></a><a href="#docshield">DocShield <span>↘</span></a><a href="#dashboard">Dashboard <span>↘</span></a><a href="#atlas">ATLAS <span>↘</span></a></nav></section>
+<section class="estudo escuro" id="atendimento" aria-labelledby="titulo-atendimento"><div class="wrap"><header class="estudo-cab"><div><p class="mono muted">01 · Revion Atendimento</p><h2 class="disp" id="titulo-atendimento">Atendimento</h2></div><div><h3>Conversa, contexto e continuidade.</h3><p>O CRM do Comercial 1 reúne a conversa, os dados do contato e os scripts da equipe. A assistente virtual atende 24h e a equipe pode assumir o atendimento.</p></div></header><div class="galeria-produto"><figure class="captura captura-principal"><button class="ampliar-tela" type="button" aria-label="Ampliar: Conversa aberta"><img src="img/projetos/atendimento.png" width="1440" height="960" alt="Demonstração adaptada — Conversa aberta. Histórico, canal, dados do contato e scripts na mesma tela." loading="lazy" decoding="async"></button><figcaption><span class="mono">Conversa aberta</span><span>Histórico, canal, dados do contato e scripts na mesma tela.</span></figcaption></figure><figure class="captura captura-detalhe"><button class="ampliar-tela" type="button" aria-label="Ampliar: A lógica da assistente"><img src="img/projetos/atendimento-assistente.png" width="1440" height="960" alt="Demonstração adaptada — A lógica da assistente. Situações, fatos, personalidade e revisão antes de publicar." loading="lazy" decoding="async"></button><figcaption><span class="mono">A lógica da assistente</span><span>Situações, fatos, personalidade e revisão antes de publicar.</span></figcaption></figure></div><p class="legenda-demo">Demonstrações baseadas nos sistemas que desenvolvi para a Revion, com identidade visual adaptada ao portfólio e dados fictícios. Clique em uma tela para ampliar.</p><div class="implementacao"><h3>Arquitetura e implementação</h3><div>
+
+
+<p>Aplicação omnichannel integrada ao WhatsApp Business e ao Instagram pela Meta Cloud API, com assistente de IA 24 horas que tira dúvidas, agenda consultas e passa para a equipe com o contexto da conversa.</p>
+<ul class="lista"><li>API em Express 5 e Prisma; interface em React 19 com contrato zod compartilhado</li><li>Comercial 1, programa em Electron para a vendedora, com o WhatsApp Web oficial ao lado</li><li>Nasceu do código do Beyond, uma central para vários WhatsApps</li></ul>
+</div></div></div></section>
+<section class="estudo papel" id="docshield" aria-labelledby="titulo-docshield"><div class="wrap"><header class="estudo-cab"><div><p class="mono muted">02 · DocShield</p><h2 class="disp" id="titulo-docshield">DocShield</h2></div><div><h3>Do primeiro atendimento à assinatura.</h3><p>Recepção e equipe médica têm suas próprias interfaces. O prontuário alimenta os documentos, que seguem para geração de PDF, assinatura eletrônica e arquivamento.</p></div></header><div class="galeria-produto"><figure class="captura captura-principal"><button class="ampliar-tela" type="button" aria-label="Ampliar: Recepção"><img src="img/projetos/recepcao.png" width="1440" height="960" alt="Demonstração adaptada — Recepção. Ações do paciente: termos, anamnese e carta de internação." loading="lazy" decoding="async"></button><figcaption><span class="mono">Recepção</span><span>Ações do paciente: termos, anamnese e carta de internação.</span></figcaption></figure><figure class="captura captura-detalhe"><button class="ampliar-tela" type="button" aria-label="Ampliar: Área médica"><img src="img/projetos/medico.png" width="1440" height="960" alt="Demonstração adaptada — Área médica. Busca e documentos em uma interface própria para o médico." loading="lazy" decoding="async"></button><figcaption><span class="mono">Área médica</span><span>Busca e documentos em uma interface própria para o médico.</span></figcaption></figure><figure class="captura captura-detalhe"><button class="ampliar-tela" type="button" aria-label="Ampliar: O início da jornada"><img src="img/projetos/recepcao-busca.png" width="1440" height="960" alt="Demonstração adaptada — O início da jornada. Busca central e visão dos agendamentos e pendências do dia." loading="lazy" decoding="async"></button><figcaption><span class="mono">O início da jornada</span><span>Busca central e visão dos agendamentos e pendências do dia.</span></figcaption></figure></div><p class="legenda-demo">Demonstrações baseadas nos sistemas que desenvolvi para a Revion, com identidade visual adaptada ao portfólio e dados fictícios. Clique em uma tela para ampliar.</p><div class="implementacao"><h3>Arquitetura e implementação</h3><div>
+
+
+<p>Plataforma de termos de consentimento e contratos: modelos preenchidos a partir do prontuário, geração de PDF, assinatura eletrônica e arquivamento automático.</p>
+<ul class="lista"><li>Acompanhamento dos documentos obrigatórios em toda a jornada cirúrgica</li><li>Status das assinaturas visível para a equipe</li><li>Recepção: busca por nome ou CPF e acesso direto aos documentos do dia</li></ul>
+</div></div></div></section>
+<section class="estudo escuro" id="dashboard" aria-labelledby="titulo-dashboard"><div class="wrap"><header class="estudo-cab"><div><p class="mono muted">03 · Dashboard / TV Gerência</p><h2 class="disp" id="titulo-dashboard">Dashboard</h2></div><div><h3>Uma operação inteira em perspectiva.</h3><p>A TV Gerência coloca faturamento, vendas, gastos, estoque e metas no mesmo painel. A apresentação dá ritmo de leitura aos números que orientam a operação.</p></div></header><div class="galeria-produto"><figure class="captura captura-principal"><button class="ampliar-tela" type="button" aria-label="Ampliar: TV Gerência"><img src="img/projetos/tv-gerencia.png" width="1440" height="960" alt="Demonstração adaptada — TV Gerência. Funil de vendas, conversões e indicadores da operação." loading="lazy" decoding="async"></button><figcaption><span class="mono">TV Gerência</span><span>Funil de vendas, conversões e indicadores da operação.</span></figcaption></figure></div><p class="legenda-demo">Demonstrações baseadas nos sistemas que desenvolvi para a Revion, com identidade visual adaptada ao portfólio e dados fictícios. Clique em uma tela para ampliar.</p><div class="implementacao"><h3>Arquitetura e implementação</h3><div>
+
+
+<p>Painéis gerenciais e telas de TV que consolidam indicadores clínicos, financeiros e de marketing, com pesquisas da jornada da paciente e workers em Python que sincronizam as agendas médicas.</p>
+<ul class="lista"><li>Revion Experience: NPS por médico, alertas, rankings e tendências</li><li>Deploy com Docker no Railway e CI no GitHub Actions</li><li>Milhares de testes com Jest, Vitest e Playwright</li></ul>
+
+</div></div></div></section>
+<section class="estudo noite" id="atlas" aria-labelledby="titulo-atlas"><div class="wrap"><header class="estudo-cab"><div><p class="mono muted">04 · Open source · MIT</p><h2 id="titulo-atlas" class="disp">ATLAS</h2></div><div><h3>A decisão continua nas suas mãos.</h3><p>Cockpit desktop local-first para coordenar agentes de código. Electron, React, Node.js, SQLite e um servidor MCP próprio.</p><a class="link-ext" href="https://github.com/armandocarlini/atlas" target="_blank" rel="noopener">Repositório no GitHub ↗</a></div></header><figure class="captura"><button class="ampliar-tela" type="button" aria-label="Ampliar: cockpit do ATLAS"><img src="img/atlas-aprovacao.webp" width="1458" height="929" alt="ATLAS: pedido de criação de agente aguardando aprovação" loading="lazy"></button><figcaption>Captura real · pedido de agente e aprovação</figcaption></figure><div class="dec">
+<article><span class="mono tinta">Pedido</span><h3>Propósito, prazo e política</h3><p>Cada pedido de agente mostra o propósito, a validade e a política de execução, como o limite de dois agentes da sessão principal ao mesmo tempo. Recusar é tão fácil quanto aprovar.</p></article>
+<article><span class="mono tinta">Isolamento</span><h3>Uma worktree por tarefa</h3><p>A aprovação cria uma worktree Git isolada, numa branch própria, e o agente nasce nela. O ATLAS nunca remove worktrees nem branches.</p></article>
+<article><span class="mono tinta">Evidência</span><h3>Prova, não promessa</h3><p>O agente pede revisão com os comandos que executou, e o ATLAS anexa um retrato Git coletado por ele mesmo. Se o lint falhou, o painel mostra.</p></article>
+<article><span class="mono tinta">MCP</span><h3>Sem porta de rede</h3><p>A ponte MCP usa named pipe com token por run e só é registrada com o seu consentimento. Cada sessão recebe ferramentas restritas ao próprio projeto.</p></article>
+<article><span class="mono tinta">Terminais</span><h3>PowerShell de verdade</h3><p>PTY com node-pty e xterm.js. Qualquer terminal vira uma janela própria e volta ao grid sem encerrar o processo.</p></article>
+<article><span class="mono tinta">Hoje</span><h3>Merge manual</h3><p>Testes em Node, testes de fumaça do desktop e CI no GitHub Actions. Os agentes propõem, você integra.</p></article>
+</div>
+<div class="arq">
+<div><span class="mono tinta">Interface · React</span><p>Cockpit com grid e foco por sessão; tarefas, mensagens e evidências.</p></div>
+<div style="border-style:solid;border-color:var(--tinta)"><span class="mono tinta">Processo principal · guarda o estado</span><p>SQLite com projetos, sessões, runs, tarefas e eventos; PTY; descoberta Git somente leitura; host MCP.</p></div>
+<div><span class="mono tinta">Agentes · CLIs reais</span><p>Kimi Code e OpenCode, conectados por named pipe, sem porta de rede.</p></div>
+</div></div></section>
+<section class="estudo escuro"><div class="wrap"><p class="mono muted">Integrações e infraestrutura</p><div class="complementos-grid"><article class="modulo">
+
+<h3 >Da origem à conversão.</h3>
+<p>Gestão de leads com atribuição de origem, de campanhas pagas ou orgânico, e acompanhamento de conversão integrados à agenda e ao prontuário eletrônico da clínica.</p>
+<ul class="lista"><li>Fluxos de follow-up com acompanhamento personalizado</li><li>Agente de IA comercial que propõe o resgate de leads</li><li>Integração com a agenda e o prontuário eletrônico</li></ul>
+</article><article class="modulo">
+
+<h3 >Um login para tudo. Acesso por função.</h3>
+<p>Login único, autenticação multifator e acesso por função nas aplicações internas. Assistentes por setor com ferramentas restritas e registro de auditoria em toda operação que altera dados.</p>
+<ul class="lista"><li>A sessão chega aos apps por troca de código de uso único</li><li>Zeus e um conector MCP para o Claude consultar a clínica</li><li>Data Agent somente leitura: qualquer escrita responde 405</li></ul>
+</article></div></div></section>
+<footer class="projetos-final wrap"><p class="mono muted">Tem um projeto em mente?</p><a class="disp" href="index.html#contato">Vamos conversar ↗</a><div class="rodape-l mono"><span>© 2026 Armando Carlini</span><a href="index.html">Voltar para a home</a></div></footer></main>
+<script src="js/vendor/gsap-3.13.0.min.js"></script><script src="js/vendor/ScrollTrigger-3.13.0.min.js"></script><script src="js/projetos.js"></script></body></html>

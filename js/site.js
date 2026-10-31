@@ -359,7 +359,7 @@
     const foto = $('.hero-foto');
     const palavras = partirPalavras($('.manif-t'));
     const fundoImg = $('.hero-fundo img');
-    const tlHero = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=200%', pin: true, scrub: 0.8 } });
+    const tlHero = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=110%', pin: true, scrub: 0.6 } });
     tlHero.to(foto, { opacity: 0, scale: 0.86, y: -40, ease: 'power2.in', duration: 0.6 }, 0)
       .to(fundoImg, { filter: 'blur(2px) brightness(0.55) saturate(1.05)', scale: 1.02, ease: 'power1.out', duration: 0.8 }, 0)
       .to('.hero-nome .l1', { xPercent: -60, opacity: 0, ease: 'power2.in', duration: 0.7 }, 0)
@@ -416,7 +416,7 @@
         barras.forEach((b, i) => { b.style.transform = 'scaleX(' + Math.min(1, Math.max(0, p * 5 - i)) + ')'; });
       };
       andar();
-      gsap.timeline({ scrollTrigger: { trigger: '.sis', start: 'top top', end: '+=420%', pin: true, scrub: 0.6 } })
+      gsap.timeline({ scrollTrigger: { trigger: '.sis', start: 'top top', end: '+=160%', pin: true, scrub: 0.4 } })
         .to(prox, { p: 1, ease: 'none', duration: 1, onUpdate: andar });
     }
 
@@ -425,11 +425,13 @@
       const nome = $('.caso-nome .fit', caso);
       const pecas = $$('.peca', caso);
       const info = $('.caso-info', caso);
-      const tl = gsap.timeline({ scrollTrigger: { trigger: caso, start: 'top top', end: '+=170%', pin: true, scrub: 0.8 } });
+      const tl = gsap.timeline({ scrollTrigger: { trigger: caso, start: 'top top', end: '+=70%', pin: true, scrub: 0.5 } });
       tl.fromTo(nome, { x: () => innerWidth * 0.12 }, { x: () => -(nome.offsetWidth - innerWidth * 0.75), ease: 'none', duration: 1 }, 0);
       pecas.forEach((p, i) => {
         const z = parseFloat(p.dataset.z || '1');
-        tl.from(p, { y: () => innerHeight * (0.55 + 0.3 * z), rotation: (i % 2 ? 7 : -6) * z, opacity: 0, ease: 'power3.out', duration: 0.35 }, 0.04 + i * 0.07)
+        const documento = caso.classList.contains('projeto-c3');
+        const dados = caso.classList.contains('projeto-c5');
+        tl.from(p, { y: documento ? 90 : 40, x: documento ? 0 : (dados ? 70 : -70), rotationY: dados ? -12 : 0, rotation: documento ? -5 : 0, scale: 0.94, opacity: 0, ease: 'power3.out', duration: 0.35 }, 0.04 + i * 0.07)
           .to(p, { y: () => -innerHeight * 0.06 * z, ease: 'none', duration: 0.55 }, 0.45);
       });
       tl.from(info, { y: 60, opacity: 0, duration: 0.25, ease: 'power3.out' }, 0.1);
@@ -460,7 +462,7 @@
     }) : () => {};
     const buscar = () => { if (durV && !vid.seeking && Math.abs(vid.currentTime - alvoV.t) > 0.02) vid.currentTime = alvoV.t; };
     gsap.ticker.add(buscar);
-    gsap.timeline({ scrollTrigger: { trigger: cidade, start: 'top top', end: '+=380%', pin: true, scrub: 0.8,
+    gsap.timeline({ scrollTrigger: { trigger: cidade, start: 'top top', end: '+=190%', pin: true, scrub: 0.6,
         onUpdate: (st) => { alvoV.t = Math.min(1, Math.max(0, (st.progress - 0.1) / 0.85)) * Math.max(0, durV - 0.05); } } })
       .from('.cid-b1', { opacity: 0, y: 40, duration: 0.05 }, 0)
       .to('.tela', { scale: 4.2, opacity: 0, ease: 'power2.in', duration: 0.2 }, 0.04)
@@ -484,7 +486,7 @@
     };
     aplicarZ(0);
     const tz = { z: 0 };
-    gsap.timeline({ scrollTrigger: { trigger: '.tunel', start: 'top top', end: '+=320%', pin: true, scrub: 0.8 } })
+    gsap.timeline({ scrollTrigger: { trigger: '.tunel', start: 'top top', end: '+=220%', pin: true, scrub: 0.6 } })
       .to(tz, { z: prof, ease: 'none', duration: 1, onUpdate: () => aplicarZ(tz.z) }, 0)
       .to('.tunel-txt', { opacity: 1, duration: 0.12 }, 0.84);
 
@@ -530,7 +532,7 @@
     // Abertura, cidade e túnel têm câmera própria; o restante acompanha o dedo.
     ScrollTrigger.config({ ignoreMobileResize: true });
     const palavras = partirPalavras($('.manif-t'));
-    const hero = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=115%', pin: true, scrub: 0.35 } });
+    const hero = gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=80%', pin: true, scrub: 0.35 } });
     hero.to('.hero-foto', { scale: 1.12, opacity: 0, duration: 0.35 }, 0)
       .to('.hero-nome .l1', { xPercent: -35, opacity: 0, duration: 0.4 }, 0)
       .to('.hero-nome .l2', { xPercent: 35, opacity: 0, duration: 0.4 }, 0)
@@ -567,7 +569,7 @@
       const nome = $('.caso-nome .fit', caso);
       gsap.fromTo(nome, { x: 20 }, { x: () => -Math.max(0, nome.offsetWidth - innerWidth + 24), ease: 'none', scrollTrigger: { trigger: caso, start: 'top bottom', end: 'bottom top', scrub: 0.4, invalidateOnRefresh: true } });
       $$('.peca', caso).forEach((el, i) => {
-        gsap.from(el, { y: 65, rotation: i % 2 ? 3 : -3, scale: 0.94, opacity: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top 96%', end: 'top 58%', scrub: 0.3 } });
+        gsap.from(el, { y: 40, rotation: caso.classList.contains('projeto-c3') ? -3 : 0, rotationX: caso.classList.contains('projeto-c5') ? 12 : 0, scale: 0.94, opacity: 0, ease: 'none', scrollTrigger: { trigger: el, start: 'top 96%', end: 'top 68%', scrub: 0.3 } });
       });
       $$('.seq', caso).forEach((el) => gsap.from(el, { y: 14, opacity: 0, duration: 0.45, scrollTrigger: { trigger: el, start: 'top 78%', toggleActions: 'play none none reverse' } }));
       $$('.barras span, .nps', caso).forEach((el) => gsap.from(el, { scaleY: 0, transformOrigin: 'bottom', duration: 0.8, scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' } }));
@@ -593,7 +595,7 @@
     const pararFotos = quandoPerto($('.tunel'), '150%', () => {
       fotos.forEach((el) => { $('img', el).loading = 'eager'; });
     });
-    gsap.timeline({ scrollTrigger: { trigger: '.tunel', start: 'top top', end: '+=300%', pin: true, scrub: 0.45 } })
+    gsap.timeline({ scrollTrigger: { trigger: '.tunel', start: 'top top', end: '+=220%', pin: true, scrub: 0.45 } })
       .to(camera, { z: 3900, duration: 1, ease: 'none', onUpdate: moverCamera }, 0)
       .fromTo('.tunel-txt', { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.14, ease: 'power2.out' }, 0.88)
       .to({}, { duration: 0.12 });
@@ -628,7 +630,7 @@
       preparar(); buscar();
     }));
     gsap.ticker.add(buscar);
-    gsap.timeline({ scrollTrigger: { trigger: cidade, start: 'top top', end: '+=180%', pin: true, scrub: 0.3, onUpdate: (st) => { progresso = Math.max(0, Math.min(1, (st.progress - 0.12) / 0.83)); } } })
+    gsap.timeline({ scrollTrigger: { trigger: cidade, start: 'top top', end: '+=130%', pin: true, scrub: 0.3, onUpdate: (st) => { progresso = Math.max(0, Math.min(1, (st.progress - 0.12) / 0.83)); } } })
       .to('.tela', { scale: 3, opacity: 0, duration: 0.22, ease: 'power2.in' }, 0)
       .to('.cid-b1', { opacity: 0, y: -24, duration: 0.15 }, 0.1)
       .from('.cid-b2', { opacity: 0, y: 32, duration: 0.18 }, 0.72)

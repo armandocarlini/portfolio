@@ -27,6 +27,7 @@
 <link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/projetos.css">
 <script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('sem-loader')},4500);</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Armando Ciciliano Carlini","alternateName":"Armando Carlini","jobTitle":"Engenheiro de software","url":"SITE_URL/","image":"SITE_URL/img/retrato-cor.webp","worksFor":{"@type":"Organization","name":"Revion International Clinic"},"address":{"@type":"PostalAddress","addressLocality":"São Paulo","addressCountry":"BR"},"knowsLanguage":["pt-BR","en"],"sameAs":["https://www.linkedin.com/in/armandocarlini/","https://github.com/armandocarlini","https://www.instagram.com/armando_carlini/"]}</script>
 </head>
@@ -48,7 +49,7 @@
 <span>Armando Carlini</span>
 </a>
 <nav class="nav" aria-label="Principal">
-<a class="ocul" href="#trabalho">Trabalho</a>
+<a class="nav-projetos" href="projetos.html">Projetos</a>
 <a class="ocul" href="#atlas">ATLAS</a>
 <a class="ocul" href="#sobre">Sobre</a>
 <a class="pill mag" href="#contato">Fale comigo</a>
@@ -163,200 +164,29 @@
 </div>
 </section>
 
-<section class="caso tema-escuro escuro" aria-labelledby="c1">
-<div class="caso-pin">
-<p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Atendimento</span></p>
-<div class="caso-palco wrap" aria-hidden="true">
-<div class="peca" style="--l:0%;--t:4%;--w:46%" data-z="0.6">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Conversas</span><span class="chip on" style="margin-left:auto">IA 24h</span></div>
-<div class="mk-row sel"><span class="av">MS</span><div style="flex:1;min-width:0"><b style="font-weight:500">Marina S.</b><div class="mk-mut">Pode ser quinta à tarde?</div></div><span class="chip">WhatsApp</span></div>
-<div class="mk-row"><span class="av">RC</span><div style="flex:1;min-width:0"><b style="font-weight:500">Renata C.</b><div class="mk-mut">Obrigada pelo retorno!</div></div><span class="chip">Instagram</span></div>
-<div class="mk-row"><span class="av">JP</span><div style="flex:1;min-width:0"><b style="font-weight:500">Juliana P.</b><div class="mk-mut">Equipe · Ana assumiu</div></div><span class="chip">WhatsApp</span></div>
-<div class="mk-row"><span class="av">LF</span><div style="flex:1;min-width:0"><b style="font-weight:500">Luana F.</b><div class="mk-mut">Consulta confirmada</div></div><span class="chip">Instagram</span></div>
-</div>
-</div>
-<div class="peca" style="--l:38%;--t:22%;--w:56%" data-z="1">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Marina S. · com a assistente</span><span class="chip" style="margin-left:auto">WhatsApp</span></div>
-<div style="display:flex;flex-direction:column;gap:9px;padding:18px 14px">
-<div class="bol ela seq">Oi! Queria entender como funciona a avaliação.</div>
-<div class="bol ia seq">Claro! Posso te mostrar os horários livres desta semana?</div>
-<div class="bol ela seq">Pode ser quinta à tarde?</div>
-<div class="bol ia seq">Tenho quinta às 15h e às 16h30. Qual prefere?</div>
-</div>
-<div style="display:flex;gap:9px;padding:11px 14px;border-top:1px solid #3A3632"><span class="mk-mut" style="flex:1;display:flex;align-items:center;padding:0 12px;min-height:34px;border:1px solid #3A3632;border-radius:9px">Escreva uma mensagem…</span><span class="bt pri">Enviar</span></div>
-</div>
-</div>
-<div class="peca" style="--l:14%;--t:78%;--w:40%" data-z="1.5">
-<div class="mk" style="padding:14px 16px;display:flex;align-items:center;gap:12px"><span class="av" style="background:#2B3440;color:#8EA9CC">IA</span><div><b style="font-weight:500">Passou para Ana, com o resumo</b><div class="mk-mut">Contexto da conversa anexado</div></div></div>
-</div>
-</div>
-<div class="caso-info wrap">
-<p class="mono muted">01 / 05 · apps/atendimento</p>
-<h3 id="c1">Toda conversa, no mesmo lugar.</h3>
-<p>Aplicação omnichannel integrada ao WhatsApp Business e ao Instagram pela Meta Cloud API, com assistente de IA 24 horas que tira dúvidas, agenda consultas e passa para a equipe com o contexto da conversa.</p>
-<ul class="lista"><li>API em Express 5 e Prisma; interface em React 19 com contrato zod compartilhado</li><li>Comercial 1, programa em Electron para a vendedora, com o WhatsApp Web oficial ao lado</li><li>Nasceu do código do Beyond, uma central para vários WhatsApps</li></ul>
-</div>
-</div>
-</section>
+<section class="caso caso-editado projeto-c1 tema-escuro escuro" aria-labelledby="c1">
+<div class="caso-pin"><p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Atendimento</span></p>
+<div class="caso-palco wrap"><figure class="captura peca tela-0 produto"><button class="ampliar-tela" type="button" aria-label="Ampliar: Conversa aberta"><img src="img/projetos/atendimento.png" width="1440" height="960" alt="Demonstração adaptada — Conversa aberta. Histórico, canal, dados do contato e scripts na mesma tela." loading="lazy" decoding="async"></button><figcaption><span class="mono">Conversa aberta</span><span aria-hidden="true">↗</span></figcaption></figure><figure class="captura peca tela-1 produto"><button class="ampliar-tela" type="button" aria-label="Ampliar: A lógica da assistente"><img src="img/projetos/atendimento-assistente.png" width="1440" height="960" alt="Demonstração adaptada — A lógica da assistente. Situações, fatos, personalidade e revisão antes de publicar." loading="lazy" decoding="async"></button><figcaption><span class="mono">A lógica da assistente</span><span aria-hidden="true">↗</span></figcaption></figure></div>
+<div class="caso-info wrap"><p class="mono muted">01 · Revion Atendimento</p><h3 id="c1">Conversa, contexto e continuidade.</h3><p>O CRM do Comercial 1 reúne a conversa, os dados do contato e os scripts da equipe. A assistente virtual atende 24h e a equipe pode assumir o atendimento.</p><ul class="lista"><li>React, Express e Prisma, com contratos Zod compartilhados.</li><li>WhatsApp integrado à operação; controle entre atendimento humano e IA.</li></ul><a class="link-ext" href="projetos.html#atendimento">Ver todas as telas do projeto ↗</a><p class="legenda-demo">Interface adaptada para o portfólio · dados demonstrativos</p></div></div></section>
+<section class="caso caso-editado projeto-c3 tema-papel papel" aria-labelledby="c3">
+<div class="caso-pin"><p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">DocShield</span></p>
+<div class="caso-palco wrap"><figure class="captura peca tela-0 produto"><button class="ampliar-tela" type="button" aria-label="Ampliar: Recepção"><img src="img/projetos/recepcao.png" width="1440" height="960" alt="Demonstração adaptada — Recepção. Ações do paciente: termos, anamnese e carta de internação." loading="lazy" decoding="async"></button><figcaption><span class="mono">Recepção</span><span aria-hidden="true">↗</span></figcaption></figure><figure class="captura peca tela-1 produto"><button class="ampliar-tela" type="button" aria-label="Ampliar: Área médica"><img src="img/projetos/medico.png" width="1440" height="960" alt="Demonstração adaptada — Área médica. Busca e documentos em uma interface própria para o médico." loading="lazy" decoding="async"></button><figcaption><span class="mono">Área médica</span><span aria-hidden="true">↗</span></figcaption></figure></div>
+<div class="caso-info wrap"><p class="mono muted">02 · DocShield</p><h3 id="c3">Do primeiro atendimento à assinatura.</h3><p>Recepção e equipe médica têm suas próprias interfaces. O prontuário alimenta os documentos, que seguem para geração de PDF, assinatura eletrônica e arquivamento.</p><ul class="lista"><li>Busca por paciente e acesso aos documentos da jornada.</li><li>Termos, contratos e acompanhamento das assinaturas.</li></ul><a class="link-ext" href="projetos.html#docshield">Ver todas as telas do projeto ↗</a><p class="legenda-demo">Interface adaptada para o portfólio · dados demonstrativos</p></div></div></section>
+<section class="caso caso-editado projeto-c5 tema-escuro escuro" aria-labelledby="c5">
+<div class="caso-pin"><p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Dashboard</span></p>
+<div class="caso-palco wrap"><figure class="captura peca tela-0 produto"><button class="ampliar-tela" type="button" aria-label="Ampliar: TV Gerência"><img src="img/projetos/tv-gerencia.png" width="1440" height="960" alt="Demonstração adaptada — TV Gerência. Funil de vendas, conversões e indicadores da operação." loading="lazy" decoding="async"></button><figcaption><span class="mono">TV Gerência</span><span aria-hidden="true">↗</span></figcaption></figure></div>
+<div class="caso-info wrap"><p class="mono muted">03 · Dashboard / TV Gerência</p><h3 id="c5">Uma operação inteira em perspectiva.</h3><p>A TV Gerência coloca faturamento, vendas, gastos, estoque e metas no mesmo painel. A apresentação dá ritmo de leitura aos números que orientam a operação.</p><ul class="lista"><li>Indicadores clínicos, financeiros e de marketing integrados.</li><li>Deploy em Docker e Railway, com CI no GitHub Actions.</li></ul><a class="link-ext" href="projetos.html#dashboard">Ver todas as telas do projeto ↗</a><p class="legenda-demo">Interface adaptada para o portfólio · dados demonstrativos</p></div></div></section>
+<section class="complementos wrap sec escuro" aria-label="Outros módulos"><p class="mono muted">Por trás das interfaces</p><div class="complementos-grid"><article class="modulo">
 
-<section class="caso tema-papel papel arred" aria-labelledby="c2">
-<div class="caso-pin">
-<p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Comercial</span></p>
-<div class="caso-palco wrap" aria-hidden="true">
-<div class="peca" style="--l:0%;--t:6%;--w:48%" data-z="0.7">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Lead</span></div>
-<div style="padding:20px">
-<div style="display:flex;align-items:center;gap:12px"><span class="av" style="width:42px;height:42px">CM</span><div><b style="font-weight:500;font-size:16px">Carla M.</b><div class="mk-mut">Sem resposta há 6 dias</div></div></div>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px"><span class="chip on">Origem · campanha paga</span><span class="chip">Feegow · ficha</span></div>
-<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:22px">
-<div><div style="height:4px;background:#8EA9CC;border-radius:2px"></div><p class="mk-mut" style="margin:7px 0 0">Novo</p></div>
-<div><div style="height:4px;background:#8EA9CC;border-radius:2px"></div><p style="margin:7px 0 0;font-size:12px">Contato</p></div>
-<div><div style="height:4px;background:#3A3632;border-radius:2px"></div><p class="mk-mut" style="margin:7px 0 0">Avaliação</p></div>
-<div><div style="height:4px;background:#3A3632;border-radius:2px"></div><p class="mk-mut" style="margin:7px 0 0">Fechamento</p></div>
-</div>
-</div>
-</div>
-</div>
-<div class="peca" style="--l:36%;--t:30%;--w:58%" data-z="1.1">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Sugestão da colega digital</span><span class="chip on" style="margin-left:auto">Aguardando</span></div>
-<div style="padding:18px;display:flex;flex-direction:column;gap:14px">
-<div style="padding:14px 16px;border:1px solid #3A3632;border-radius:12px;background:#262422;line-height:1.55">Oi, Carla! Tudo bem? Vi que você pediu informações na semana passada. Quer que eu veja um horário de avaliação para você?</div>
-<div style="display:flex;gap:9px;justify-content:flex-end"><span class="bt">Editar</span><span class="bt">Descartar</span><span class="bt pri aprovar">Aprovar</span></div>
-<p class="mk-mut" style="margin:0">Quem envia é a vendedora, pelo WhatsApp dela.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="caso-info wrap">
-<p class="mono muted">02 / 05 · apps/comercial · CRO</p>
 <h3 id="c2">Da origem à conversão.</h3>
 <p>Gestão de leads com atribuição de origem, de campanhas pagas ou orgânico, e acompanhamento de conversão integrados à agenda e ao prontuário eletrônico da clínica.</p>
 <ul class="lista"><li>Fluxos de follow-up com acompanhamento personalizado</li><li>Agente de IA comercial que propõe o resgate de leads</li><li>Integração com a agenda e o prontuário eletrônico</li></ul>
-</div>
-</div>
-</section>
+</article><article class="modulo">
 
-<section class="caso tema-escuro escuro" aria-labelledby="c3">
-<div class="caso-pin">
-<p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">DocShield</span></p>
-<div class="caso-palco wrap" aria-hidden="true">
-<div class="peca" style="--l:2%;--t:2%;--w:50%" data-z="0.8">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Jornada documental</span><span class="chip on" style="margin-left:auto"><span class="cont-docs">3</span> de 5</span></div>
-<div style="padding:16px 18px">
-<div style="height:5px;background:#3A3632;border-radius:3px;overflow:hidden;margin-bottom:8px"><div class="barra-docs" style="width:60%;height:100%;background:#8EA9CC"></div></div>
-<div class="mk-row" style="padding:10px 0"><span class="ok" style="background:#8EA9CC"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg></span><span style="flex:1">Ficha cadastral</span><span class="mk-mut">Assinado</span></div>
-<div class="mk-row" style="padding:10px 0"><span class="ok" style="background:#8EA9CC"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg></span><span style="flex:1">Termo de consentimento</span><span class="mk-mut">Assinado</span></div>
-<div class="mk-row" style="padding:10px 0"><span class="ok" style="background:#8EA9CC"><svg viewBox="0 0 16 16"><path d="M3 8.5 L6.5 12 L13 4.5"></path></svg></span><span style="flex:1">Proposta</span><span class="mk-mut">Assinado</span></div>
-<div class="mk-row" style="padding:10px 0"><span class="ok assina" style="border:1.5px solid #8EA9CC"></span><span style="flex:1">Contrato</span><span class="estado" style="color:#8EA9CC;font-size:12px">Aguardando</span></div>
-<div class="mk-row" style="padding:10px 0;border:0"><span class="ok" style="border:1.5px solid #4A4540"></span><span class="mk-mut" style="flex:1">Orientações pré-operatórias</span><span class="mk-mut">Pendente</span></div>
-</div>
-</div>
-</div>
-<div class="peca" style="--l:58%;--t:14%;--w:34%" data-z="1.3">
-<div class="doc">
-<h4>CONTRATO DE PRESTAÇÃO DE SERVIÇOS</h4>
-<div class="ln" style="width:92%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:88%"></div><div class="ln" style="width:60%"></div>
-<div class="ln" style="width:90%;margin-top:14px"></div><div class="ln" style="width:76%"></div><div class="ln" style="width:82%"></div>
-<div style="margin-top:22px;border-top:1px solid #C9BFB1;padding-top:10px;display:flex;justify-content:space-between;align-items:flex-end"><span style="color:#5F574E">Paciente exemplo</span><svg class="doc-assin" viewBox="0 0 588 333.5" aria-hidden="true"><path class="sig-tudo" d=""></path></svg></div>
-</div>
-</div>
-</div>
-<div class="caso-info wrap">
-<p class="mono muted">03 / 05 · apps/docshield</p>
-<h3 id="c3">Nenhuma cirurgia sem documento assinado.</h3>
-<p>Plataforma de termos de consentimento e contratos: modelos preenchidos a partir do prontuário, geração de PDF, assinatura eletrônica e arquivamento automático.</p>
-<ul class="lista"><li>Acompanhamento dos documentos obrigatórios em toda a jornada cirúrgica</li><li>Status das assinaturas visível para a equipe</li><li>Recepção: busca por nome ou CPF e acesso direto aos documentos do dia</li></ul>
-</div>
-</div>
-</section>
-
-<section class="caso tema-papel papel arred" aria-labelledby="c4">
-<div class="caso-pin">
-<p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Acesso e IA</span></p>
-<div class="caso-palco wrap" aria-hidden="true">
-<div class="peca" style="--l:0%;--t:4%;--w:44%" data-z="0.7">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Revion's Place</span></div>
-<div style="padding:22px">
-<p style="margin:0;font-size:16px;font-weight:500">Confirme que é você</p>
-<p class="mk-mut" style="margin:4px 0 0">Código do app autenticador</p>
-<div class="mfa" style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin-top:14px">
-<span>4</span><span>8</span><span>1</span><span>9</span><span>0</span><span>6</span>
-</div>
-<p class="mono" style="margin:22px 0 10px;color:#A39A8F;font-size:10px">Seus apps · função Comercial</p>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;font-size:12px">
-<span style="padding:11px 8px;border:1px solid #3A3632;border-radius:9px">Atendimento</span><span style="padding:11px 8px;border:1px solid #3A3632;border-radius:9px">Comercial</span><span style="padding:11px 8px;border:1px solid #3A3632;border-radius:9px">Daily</span>
-<span style="padding:11px 8px;border:1px dashed #4A4540;border-radius:9px;color:#6F675E">DocShield</span><span style="padding:11px 8px;border:1px dashed #4A4540;border-radius:9px;color:#6F675E">Dashboard</span><span style="padding:11px 8px;border:1px dashed #4A4540;border-radius:9px;color:#6F675E">Experience</span>
-</div>
-</div>
-</div>
-</div>
-<div class="peca" style="--l:40%;--t:26%;--w:54%" data-z="1.2">
-<div class="mk">
-<div class="mk-bar"><i></i><i></i><i></i><span class="mk-t">Pedido de ação</span><span class="chip on" style="margin-left:auto">Aguardando aprovação</span></div>
-<div style="padding:18px;display:grid;gap:12px">
-<div style="display:flex;justify-content:space-between;gap:12px"><span class="mk-mut">Origem</span><span>Claude via MCP · Zeus</span></div>
-<div style="display:flex;justify-content:space-between;gap:12px"><span class="mk-mut">Ferramenta</span><span style="font-family:var(--f-mono);font-size:11.5px">cro_agendar_proximo_passo</span></div>
-<div style="padding:13px 15px;border:1px solid #3A3632;border-radius:11px;background:#262422">Agendar o próximo contato com a paciente para quinta-feira, com lembrete para a vendedora responsável.</div>
-<div style="display:flex;gap:9px;justify-content:flex-end"><span class="bt">Recusar</span><span class="bt pri aprovar">Aprovar</span></div>
-<p class="mk-mut" style="margin:0">Nada muda nos dados antes do Aprovar. O pedido fica na trilha de auditoria.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="caso-info wrap">
-<p class="mono muted">04 / 05 · apps/place · dashboard · data-agent</p>
 <h3 id="c4">Um login para tudo. Acesso por função.</h3>
 <p>Login único, autenticação multifator e acesso por função nas aplicações internas. Assistentes por setor com ferramentas restritas e registro de auditoria em toda operação que altera dados.</p>
 <ul class="lista"><li>A sessão chega aos apps por troca de código de uso único</li><li>Zeus e um conector MCP para o Claude consultar a clínica</li><li>Data Agent somente leitura: qualquer escrita responde 405</li></ul>
-</div>
-</div>
-</section>
-
-<section class="caso tema-escuro escuro" aria-labelledby="c5">
-<div class="caso-pin">
-<p class="caso-nome disp" aria-hidden="true"><span class="fit" data-escala="1.5">Dashboard</span></p>
-<div class="caso-palco wrap" aria-hidden="true">
-<div class="peca" style="--l:0%;--t:4%;--w:44%" data-z="0.6">
-<div class="mk" style="padding:18px"><p class="mono" style="margin:0 0 14px;color:#A39A8F;font-size:10px">Leads por origem</p>
-<div class="barras" style="display:flex;align-items:flex-end;gap:10px;height:110px"><span style="flex:1;height:82%;background:#8EA9CC;border-radius:3px 3px 0 0"></span><span style="flex:1;height:56%;background:#6E84A0;border-radius:3px 3px 0 0"></span><span style="flex:1;height:38%;background:#53627A;border-radius:3px 3px 0 0"></span><span style="flex:1;height:24%;background:#404A5A;border-radius:3px 3px 0 0"></span></div>
-<div style="display:flex;gap:10px;margin-top:8px"><span class="mk-mut" style="flex:1">Pago</span><span class="mk-mut" style="flex:1">Orgânico</span><span class="mk-mut" style="flex:1">Indicação</span><span class="mk-mut" style="flex:1">Outros</span></div></div>
-</div>
-<div class="peca" style="--l:48%;--t:0%;--w:46%" data-z="1.1">
-<div class="mk" style="padding:18px"><p class="mono" style="margin:0 0 14px;color:#A39A8F;font-size:10px">Financeiro · ERP</p>
-<svg viewBox="0 0 240 110" style="width:100%;height:110px;display:block"><path class="linha-fin" d="M0 90 C30 84 40 64 70 68 C100 72 110 46 140 42 C170 38 180 54 205 28 C220 14 232 18 240 12" style="fill:none;stroke:#8EA9CC;stroke-width:2"></path></svg></div>
-</div>
-<div class="peca" style="--l:8%;--t:48%;--w:40%" data-z="1.4">
-<div class="mk" style="padding:18px"><p class="mono" style="margin:0 0 14px;color:#A39A8F;font-size:10px">NPS por médico</p>
-<div style="display:grid;gap:11px">
-<div style="display:flex;align-items:center;gap:10px"><span class="mk-mut" style="width:62px">Dr(a). A</span><span style="flex:1;height:7px;background:#3A3632;border-radius:4px"><span class="nps" style="display:block;width:88%;height:100%;background:#EEE7DD;border-radius:4px"></span></span></div>
-<div style="display:flex;align-items:center;gap:10px"><span class="mk-mut" style="width:62px">Dr(a). B</span><span style="flex:1;height:7px;background:#3A3632;border-radius:4px"><span class="nps" style="display:block;width:76%;height:100%;background:#EEE7DD;border-radius:4px"></span></span></div>
-<div style="display:flex;align-items:center;gap:10px"><span class="mk-mut" style="width:62px">Dr(a). C</span><span style="flex:1;height:7px;background:#3A3632;border-radius:4px"><span class="nps" style="display:block;width:69%;height:100%;background:#EEE7DD;border-radius:4px"></span></span></div>
-</div></div>
-</div>
-<div class="peca" style="--l:54%;--t:44%;--w:40%" data-z="0.9">
-<div class="mk" style="padding:18px"><p class="mono" style="margin:0 0 14px;color:#A39A8F;font-size:10px">Agenda de hoje · sincronizada</p>
-<div style="display:grid;gap:7px">
-<div style="display:flex;gap:10px;align-items:center"><span class="mk-mut" style="width:42px">08:00</span><span style="flex:1;height:20px;border-radius:5px;background:#2B3440"></span></div>
-<div style="display:flex;gap:10px;align-items:center"><span class="mk-mut" style="width:42px">10:00</span><span style="flex:.6;height:20px;border-radius:5px;background:#34312E"></span></div>
-<div style="display:flex;gap:10px;align-items:center"><span class="mk-mut" style="width:42px">13:30</span><span style="flex:1;height:20px;border-radius:5px;background:#2B3440"></span></div>
-</div></div>
-</div>
-</div>
-<div class="caso-info wrap">
-<p class="mono muted">05 / 05 · apps/dashboard · revion-experience</p>
-<h3 id="c5">A clínica se enxerga.</h3>
-<p>Painéis gerenciais e telas de TV que consolidam indicadores clínicos, financeiros e de marketing, com pesquisas da jornada da paciente e workers em Python que sincronizam as agendas médicas.</p>
-<ul class="lista"><li>Revion Experience: NPS por médico, alertas, rankings e tendências</li><li>Deploy com Docker no Railway e CI no GitHub Actions</li><li>Milhares de testes com Jest, Vitest e Playwright</li></ul>
-<p class="mono muted stack">Telas em código · dados de exemplo</p>
-</div>
-</div>
-</section>
+</article></div><a class="link-ext" href="projetos.html">Explorar os projetos e a implementação ↗</a></section>
 
 <section class="sec cid" id="cidade" aria-labelledby="cid-t">
 <div class="cid-pin">
@@ -443,10 +273,7 @@
 <figure><blockquote>LLMs são probabilísticos, mas segurança exige regras determinísticas.</blockquote><figcaption>Uma das ideias do Marcelo Echeverria, da Replit, que levo comigo.</figcaption></figure>
 <figure><blockquote>O “sim” humano precisa ser um mecanismo da infraestrutura, não uma instrução no prompt.</blockquote><figcaption>A outra ideia do Echeverria, e a regra que sigo na Revion.</figcaption></figure>
 </div>
-<div class="diario-txt">
-<p>Passei o dia no AI Brasil Experience com a turma da FMU. Nas palestras sobre IA nas empresas, dois dados me fizeram repensar ganho de produtividade: segundo o MIT NANDA, 95% dos pilotos de IA generativa não mostraram impacto mensurável na DRE; num estudo do METR, desenvolvedores experientes se sentiram 20% mais rápidos com IA, mas o cronômetro mediu 19% mais lentos.</p>
-<p>Para fechar o dia, o Clóvis de Barros Filho, de quem sou muito fã: se o robô faz a ginástica no seu lugar, não adianta nada. A escola existe para a gente aprender a pensar. A IA pode ajudar muito, mas pensar continua sendo trabalho nosso.</p>
-</div>
+<div class="diario-txt"><p>No AI Brasil Experience, uma ideia ficou comigo: a IA pode ajudar muito, mas pensar continua sendo trabalho nosso. Levo isso para os sistemas que construo — decisões explícitas, contratos validados e evidência do que realmente aconteceu.</p></div>
 <a class="link-ext" href="https://www.linkedin.com/in/armandocarlini/recent-activity/all/" target="_blank" rel="noopener">Ler o post completo no LinkedIn ↗</a>
 </div>
 </section>
@@ -522,6 +349,7 @@
 <script src="js/vendor/gsap-3.13.0.min.js"></script>
 <script src="js/vendor/ScrollTrigger-3.13.0.min.js"></script>
 <script src="js/vendor/lenis-1.3.4.min.js"></script>
+<script src="js/projetos.js"></script>
 <script src="js/site.js"></script>
 </body>
 </html>
